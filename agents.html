@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agents — Dristi</title>
+  <meta name="description" content="87 agents · 87 MCP tools · OWASP WSTG v4.2 methodology across 25 vulnerability classes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%228%22 stroke=%22%23ff8b14%22 stroke-width=%222.5%22 fill=%22none%22/><path d=%22M12 18h24M12 24h18M12 30h14%22 stroke=%22%23ff8b14%22 stroke-width=%222%22 stroke-linecap=%22round%22/></svg>">
+</head>
+<body>
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/assets/dristi-logo.svg" alt="Dristi" class="nav-brand-img" width="32" height="32">Dristi
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/agents.html">Agents</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener" class="theme-toggle" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>87 Agents</h1>
+      <p>87 agents · 87 MCP tools · OWASP WSTG v4.2 methodology across 25 vulnerability classes</p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-bottom:4rem">
+    <div class="agents-search">
+      <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="agentSearch" placeholder="Search agents by name, category, or description..." autocomplete="off">
+    </div>
+
+    <div class="agents-filters" id="agentFilters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hunt">Hunt (54)</button>
+      <button class="filter-btn" data-filter="pipeline">Pipeline (15)</button>
+      <button class="filter-btn" data-filter="specialty">Specialty (8)</button>
+      <button class="filter-btn" data-filter="support">Support (10)</button>
+    </div>
+
+    <div class="agents-grid" id="agentsGrid"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/dristi-logo.svg" alt="Dristi" style="width:24px;height:24px;display:inline;vertical-align:middle;margin-right:6px">Dristi
+          </div>
+          <p class="footer-desc">AI-assisted bug bounty pipeline. 87 agents. Full OWASP WSTG coverage.</p>
+        </div>
+        <div><h4>Product</h4><div class="footer-links"><a href="/docs.html">Documentation</a><a href="/agents.html">Agents</a><a href="/docs.html#install">Install</a><a href="/docs.html#usage">Usage</a></div></div>
+        <div><h4>Community</h4><div class="footer-links"><a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/manojxshrestha/dristi/issues" target="_blank" rel="noopener">Issues</a><a href="https://github.com/manojxshrestha/dristi/discussions" target="_blank" rel="noopener">Discussions</a></div></div>
+        <div><h4>Legal</h4><div class="footer-links"><a href="#">License (Proprietary)</a><a href="#">Privacy</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dristi. All Rights Reserved.</span>
+        <span>built by <a href="https://github.com/manojxshrestha" target="_blank" rel="noopener" style="color:var(--accent)">@manojxshrestha</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+  <script src="/js/agents.js"></script>
+</body>
+</html>

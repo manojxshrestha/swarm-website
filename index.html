@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dristi — AI-Assisted Bug Bounty Hunting Pipeline | OWASP WSTG Automation</title>
+  <meta name="description" content="87 AI agents automate the full bug bounty workflow — recon, vulnerability detection, exploitation, reporting. Full OWASP WSTG v4.2 coverage. Open-source penetration testing framework.">
+  <meta name="keywords" content="bug bounty, penetration testing, OWASP WSTG, security automation, vulnerability hunting, AI security agents, MCP security, WSTG automation">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%228%22 stroke=%22%23ff8b14%22 stroke-width=%222.5%22 fill=%22none%22/><path d=%22M12 18h24M12 24h18M12 30h14%22 stroke=%22%23ff8b14%22 stroke-width=%222%22 stroke-linecap=%22round%22/></svg>">
+   <meta property="og:title" content="Dristi — AI-Assisted Bug Bounty Hunting Pipeline">
+   <meta property="og:description" content="87 AI agents automate recon, vulnerability detection, exploitation, and reporting. Full OWASP WSTG v4.2.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dristi-ai.pages.dev">
+  <meta name="theme-color" content="#0c0c14">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/assets/dristi-logo.svg" alt="Dristi" class="nav-brand-img" width="32" height="32">
+        Dristi
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/agents.html">Agents</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener" class="theme-toggle" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content container">
+      <div class="hero-badge" style="opacity:0" id="heroBadge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="#ff8b14"><circle cx="4" cy="4" r="3"/></svg> v2.0
+      </div>
+      <h1 id="heroTitle" style="opacity:0">
+        <span class="gradient-text">We hunt the bugs</span>
+        <span>that your audits miss.</span>
+      </h1>
+      <p class="hero-subtitle" style="opacity:0" id="heroSub">
+         87 specialized agents orchestrate reconnaissance, vulnerability detection, exploitation, and reporting — covering the full OWASP WSTG test suite. No API key required — use free models or bring your own (Anthropic, OpenAI, Google, GitHub, and more).
+      </p>
+      <div class="hero-actions" style="opacity:0" id="heroActions">
+        <a href="/docs.html" class="btn btn-primary">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener" class="btn btn-secondary">View on GitHub</a>
+      </div>
+      <div class="hero-terminal" style="opacity:0;transform:translateY(20px)" id="heroTerminal">
+        <div class="terminal-header">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-title">dristi — install.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="line" style="animation-delay:0.1s"><span class="prompt">$</span> <span class="cmd">git clone https://github.com/manojxshrestha/dristi.git</span></div>
+          <div class="line" style="animation-delay:0.4s"><span class="prompt">$</span> <span class="cmd">cd dristi/scripts</span></div>
+          <div class="line" style="animation-delay:0.7s"><span class="prompt">$</span> <span class="cmd">chmod +x *</span></div>
+          <div class="line" style="animation-delay:1s"><span class="prompt">$</span> <span class="cmd">./install.sh</span></div>
+          <div class="line" style="animation-delay:1.3s"><span class="output">[+] Installing 60+ security tools...</span></div>
+          <div class="line" style="animation-delay:1.7s"><span class="prompt">$</span> <span class="cmd">./setup.sh</span></div>
+          <div class="line" style="animation-delay:2s"><span class="output">[+] Configuration complete</span></div>
+          <div class="line" style="animation-delay:2.3s"><span class="prompt">$</span> <span class="cmd">./burp-connect.sh</span></div>
+          <div class="line" style="animation-delay:2.6s"><span class="output">[+] Burp Suite connected</span></div>
+          <div class="line" style="animation-delay:3s"><span class="prompt">$</span> <span class="cmd">cd .. && opencode</span></div>
+          <div class="line" style="animation-delay:3.3s"><span class="output">[+] Autopilot mode engaged</span></div>
+          <div class="line" style="animation-delay:3.6s"><span class="output">[+] Target: example.com</span></div>
+          <div class="line" style="animation-delay:4s"><span class="output">[+] Phase 1/12 complete</span></div>
+          <div class="line" style="animation-delay:4.3s"><span class="prompt">$</span> <span class="terminal-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-number" data-count="87">0</div><div class="stat-label">Specialized Agents</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="86">0</div><div class="stat-label">Integrated Tools</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="96">0</div><div class="stat-label">WSTG Tests Covered</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="12">0</div><div class="stat-label">Pipeline Phases</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard / Leads -->
+  <section class="dash-section" id="dashboard">
+    <div class="container">
+      <div class="dash-header fade-in">
+        <div>
+          <h2>dashboard <span class="gradient-text">leads</span></h2>
+          <div class="meta">27 leads &middot; 6 pending</div>
+        </div>
+      </div>
+      <div class="dash-tabs fade-in" id="dashTabs">
+        <div class="dash-tab" data-tab="pipeline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Pipeline <span class="count">12</span></div>
+        <div class="dash-tab active" data-tab="leads"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg> Leads <span class="count">27</span></div>
+      </div>
+
+      <!-- Pipeline panel -->
+      <div class="tab-panel" id="panel-pipeline">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+          <table class="pipeline-table" style="font-size:.8125rem">
+            <thead>
+              <tr>
+                <th></th><th>Phase</th><th>Agent</th><th>What it does</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="p-num">1</span></td><td class="p-phase">SCOPE</td><td class="p-agent">@scope</td><td class="p-desc">Register target, scope boundaries, credentials</td></tr>
+              <tr><td><span class="p-num">2</span></td><td class="p-phase">AUTH</td><td class="p-agent">(autopilot)</td><td class="p-desc">Get tokens/cookies, detect WAF</td></tr>
+              <tr><td><span class="p-num">3</span></td><td class="p-phase">INTEL</td><td class="p-agent">@pintel</td><td class="p-desc">Passive OSINT: WHOIS, M365, cloud, spoof</td></tr>
+              <tr><td><span class="p-num">4</span></td><td class="p-phase">RECON</td><td class="p-agent">@recon</td><td class="p-desc">Subdomains, crawl, params, nuclei, secrets</td></tr>
+              <tr><td><span class="p-num">5</span></td><td class="p-phase">SURFACE</td><td class="p-agent">@surface</td><td class="p-desc">Classify endpoints, prioritize attack surface</td></tr>
+              <tr><td><span class="p-num">6</span></td><td class="p-phase">HUNT</td><td class="p-agent">@hunt</td><td class="p-desc">Test all 25 bug classes via 54 @hunt-*</td></tr>
+              <tr><td><span class="p-num">7</span></td><td class="p-phase">DEEPTHINK</td><td class="p-agent">@deepthink</td><td class="p-desc">(conditional) First-principles gap analysis</td></tr>
+              <tr><td><span class="p-num">8</span></td><td class="p-phase">EXPLOIT</td><td class="p-agent">@exploit</td><td class="p-desc">Deep-research exploitation + WAF bypass</td></tr>
+              <tr><td><span class="p-num">9</span></td><td class="p-phase">SEARCH</td><td class="p-agent">@search</td><td class="p-desc">(conditional) Re-dispatch for uncovered classes</td></tr>
+              <tr><td><span class="p-num">10</span></td><td class="p-phase">CAPTURE</td><td class="p-agent">@capture</td><td class="p-desc">Evidence collection, screenshots, redaction</td></tr>
+              <tr><td><span class="p-num">11</span></td><td class="p-phase">VALIDATE</td><td class="p-agent">@validate</td><td class="p-desc">Re-validate PoCs, 7-Question Gate</td></tr>
+              <tr><td><span class="p-num">12</span></td><td class="p-phase">REPORT</td><td class="p-agent">@report</td><td class="p-desc">Coverage check, generate report</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Leads panel -->
+      <div class="tab-panel active" id="panel-leads">
+        <div style="overflow-x:auto">
+          <table class="leads-table fade-in">
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>Title</th>
+                <th>Target</th>
+                <th>CVSS</th>
+                <th>Pre-req</th>
+                <th>Triage</th>
+                <th>AI Triage</th>
+                <th>File</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="sev-badge critical">critical</span></td>
+                <td class="title-cell">SSRF in /api/webhooks/subscribe reaches 169.254.169.254</td>
+                <td class="target-cell">acme-shop</td>
+                <td class="cvss-cell sev-critical">9.8*</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge pending">pending</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/webhooks/subscribe.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge critical">critical</span></td>
+                <td class="title-cell">open redirect&rarr;OAuth state reuse&rarr;full account takeover</td>
+                <td class="target-cell">acme-shop</td>
+                <td class="cvss-cell sev-critical">9.6</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge valid">valid</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/auth/oauth.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge critical">critical</span></td>
+                <td class="title-cell">Auth bypass via JWT `none` algorithm in fallback path</td>
+                <td class="target-cell">docs-api</td>
+                <td class="cvss-cell sev-critical">9.4</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge valid">valid</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">internal/auth/verify.go</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge high">high</span></td>
+                <td class="title-cell">IDOR on /users/:id/export reveals PII for any user</td>
+                <td class="target-cell">patient-portal</td>
+                <td class="cvss-cell sev-high">8.6*</td>
+                <td><span class="triage-badge" style="background:#f97316;color:#f97316;background:rgba(249,115,22,0.1)">Low</span></td>
+                <td><span class="triage-badge pending">pending</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/api/users.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge high">high</span></td>
+                <td class="title-cell">IDOR leaks user IDs&rarr;predictable session token&rarr;impersonate any user</td>
+                <td class="target-cell">patient-portal</td>
+                <td class="cvss-cell sev-high">8.9*</td>
+                <td><span class="triage-badge" style="background:rgba(249,115,22,0.1);color:#f97316">Low</span></td>
+                <td><span class="triage-badge pending">pending</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/session/sign.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge high">high</span></td>
+                <td class="title-cell">SQL injection in sort= parameter on search endpoint</td>
+                <td class="target-cell">acme-shop</td>
+                <td class="cvss-cell sev-high">8.1</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge valid">valid</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/api/search.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge critical">critical</span></td>
+                <td class="title-cell">SSRF in webhook&rarr;IMDS token&rarr;IAM escalation to admin</td>
+                <td class="target-cell">ingest-svc</td>
+                <td class="cvss-cell sev-critical">9.9*</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge valid">valid</span></td>
+                <td><span class="triage-ai valid">VALID</span></td>
+                <td class="file-cell">src/webhooks/*.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge high">high</span></td>
+                <td class="title-cell">Stored XSS in markdown comment renderer</td>
+                <td class="target-cell">docs-api</td>
+                <td class="cvss-cell sev-high">7.4</td>
+                <td><span class="triage-badge" style="background:rgba(249,115,22,0.1);color:#f97316">Low</span></td>
+                <td><span class="triage-badge pending">pending</span></td>
+                <td><span class="triage-ai needs-info">NEEDS_INFO</span></td>
+                <td class="file-cell">src/render/md.tsx</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge medium">medium</span></td>
+                <td class="title-cell">CORS wildcard + credentials enabled on /api/v2/*</td>
+                <td class="target-cell">acme-shop</td>
+                <td class="cvss-cell sev-medium">6.5</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge low-impact">low-impact</span></td>
+                <td><span class="triage-ai low-impact">LOW_IMPACT</span></td>
+                <td class="file-cell">src/server/cors.ts</td>
+              </tr>
+              <tr>
+                <td><span class="sev-badge medium">medium</span></td>
+                <td class="title-cell">Unvalidated redirect in OAuth callback state</td>
+                <td class="target-cell">banksite-web</td>
+                <td class="cvss-cell sev-medium">6.1</td>
+                <td><span class="triage-badge" style="background:rgba(107,114,128,0.1);color:#9ca3af">None</span></td>
+                <td><span class="triage-badge pending">pending</span></td>
+                <td><span class="triage-ai needs-info">NEEDS_INFO</span></td>
+                <td class="file-cell">src/auth/oauth.ts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Built for <span class="gradient-text">serious hunting</span></h2>
+        <p>Dristi combines autonomous reasoning with industry-standard security tools to automate the entire bug bounty workflow.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Deep Reconnaissance</h3>
+          <p>Subdomain enumeration, live host discovery, tech fingerprinting, parameter extraction — surface every attack vector.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <h3>Full WSTG Coverage</h3>
+          <p>96+ OWASP WSTG tests automated across 12 categories — from information gathering to client-side testing.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01"/></svg></div>
+           <h3>87 Specialized Agents</h3>
+           <p>54 hunt agents — XSS, SQLi, SSRF, and every OWASP-class in between — each with deep domain expertise. Works with free models or your own API key.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Exploitation Pipeline</h3>
+          <p>Phase 8 EXPLOIT systematically validates findings with real PoCs before they enter your report.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+          <h3>Smart Prioritization</h3>
+          <p>Risk-scored endpoint queue, attack chain discovery, and automated severity grading keep you focused on what matters.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+          <h3>Professional Reports</h3>
+          <p>CVSS-scored findings with evidence, PoC output, remediation guidance — ready for client delivery or H1 submission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section class="section" style="background:var(--bg-alt)" id="use-cases">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Built for <span class="gradient-text">security researchers</span></h2>
+        <p>Whether you hunt bounties or audit enterprise apps, Dristi adapts to your workflow.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Bug Bounty Hunters</h3>
+          <p>Automate recon-to-report in hours, not weeks. Find vulnerabilities that automated scanners miss — SSRF, IDOR, business logic flaws, and attack chains. AI triage prioritizes what matters.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <h3>Penetration Testers</h3>
+          <p>Full OWASP WSTG v4.2 methodology automated across 96+ tests. CVSS-scored findings with PoC evidence and remediation guidance — ready for client deliverables.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8b14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Security Teams</h3>
+          <p>Continuous testing in CI/CD pipelines. Customize agents for your tech stack — React, Node.js, Go, Java, Python, and more. Works with your existing tools (Burp, Nuclei, etc.).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Up and running in <span class="gradient-text">3 commands</span></h2>
+        <p>No complex setup. No endless configuration. Install, configure, and start hunting.</p>
+      </div>
+      <div class="steps">
+        <div class="step fade-in">
+          <h3>Install Tools</h3>
+          <p>One command installs 60+ security tools — Go binaries, Python packages, Cargo crates, and wordlists.</p>
+          <code>curl -sSL https://dristi.sh/install | bash</code>
+        </div>
+        <div class="step fade-in">
+          <h3>Configure Agents</h3>
+          <p>Set up your OpenCode config, agent definitions, and API credentials in one interactive session.</p>
+          <code>./dristi setup --target example.com</code>
+        </div>
+        <div class="step fade-in">
+          <h3>Start Hunting</h3>
+          <p>Launch the full pipeline or target specific vulnerability classes with dedicated hunt agents.</p>
+          <code>dristi hunt --scope "*.example.com"</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agent preview -->
+  <section class="section agent-section" id="agents">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Meet the <span class="gradient-text">agents</span></h2>
+        <p>From reconnaissance to reporting — every phase has dedicated specialists.</p>
+      </div>
+      <div class="agent-grid">
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-xss</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-sqli</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-ssrf</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-ato</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-idor</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-rce</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>recon</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>scope</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>capture</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>validate</div>
+        <div class="agent-tag fade-in"><span class="dot specialty"></span>cloud-iam-deep</div>
+        <div class="agent-tag fade-in"><span class="dot specialty"></span>supply-chain</div>
+        <div class="agent-tag fade-in"><span class="dot specialty"></span>m365-entra-attack</div>
+        <div class="agent-tag fade-in"><span class="dot specialty"></span>enterprise-vpn</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-cors</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-lfi</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-ssti</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-nosqli</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-oauth</div>
+        <div class="agent-tag fade-in"><span class="dot hunt"></span>hunt-brute-force</div>
+        <div class="agent-tag fade-in"><span class="dot support"></span>web2-vuln-classes</div>
+        <div class="agent-tag fade-in"><span class="dot support"></span>osint-methodology</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>report</div>
+        <div class="agent-tag fade-in"><span class="dot pipeline"></span>autopilot</div>
+      </div>
+      <div style="text-align:center;margin-top:2rem" class="fade-in">
+        <a href="/agents.html" class="btn btn-outline">View All 87 Agents <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Dristi -->
+  <section class="section" style="background:var(--bg-alt)" id="why">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Why <span class="gradient-text">Dristi</span></h2>
+        <p>How Dristi compares to the alternatives for your security testing workflow.</p>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="leads-table fade-in" style="min-width:600px">
+          <thead>
+            <tr>
+              <th></th>
+              <th style="color:var(--accent);font-size:.8125rem">Dristi</th>
+              <th>Traditional Scanners</th>
+              <th>Manual Testing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-weight:600;font-size:.8125rem">Coverage</td><td style="color:var(--text)">96+ WSTG tests · 25 vuln classes</td><td>Limited to known CVEs + patterns</td><td>Unlimited (time-bound)</td></tr>
+            <tr><td style="font-weight:600;font-size:.8125rem">AI Triage</td><td style="color:var(--text)">VALID / NEEDS_INFO / LOW_IMPACT</td><td>High false-positive rate</td><td>Manual review only</td></tr>
+            <tr><td style="font-weight:600;font-size:.8125rem">Attack Chains</td><td style="color:var(--text)">Automated chain discovery</td><td>Single-issue only</td><td>Researcher finds them</td></tr>
+            <tr><td style="font-weight:600;font-size:.8125rem">Evidence</td><td style="color:var(--text)">Screenshots + HAR + PoC reports</td><td>Raw logs only</td><td>Manual documentation</td></tr>
+            <tr><td style="font-weight:600;font-size:.8125rem">Reporting</td><td style="color:var(--text)">CVSS-scored per-finding PoC reports</td><td>Generic PDF output</td><td>Manual report writing</td></tr>
+            <tr><td style="font-weight:600;font-size:.8125rem">Cost</td><td style="color:var(--text)">Free · open-source · BYO models</td><td>$1k–$50k/year per seat</td><td>$200–$500/hr</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/dristi-logo.svg" alt="Dristi" style="width:24px;height:24px;display:inline;vertical-align:middle;margin-right:6px">
+            Dristi
+          </div>
+          <p class="footer-desc">AI-assisted bug bounty pipeline. 87 agents. Full OWASP WSTG coverage.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="/docs.html">Documentation</a>
+            <a href="/agents.html">Agents</a>
+            <a href="/docs.html#install">Install</a>
+            <a href="/docs.html#usage">Usage</a>
+          </div>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <div class="footer-links">
+            <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/manojxshrestha/dristi/issues" target="_blank" rel="noopener">Issues</a>
+            <a href="https://github.com/manojxshrestha/dristi/discussions" target="_blank" rel="noopener">Discussions</a>
+          </div>
+
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <div class="footer-links">
+            <a href="#">License (Proprietary)</a>
+            <a href="#">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dristi. All Rights Reserved.</span>
+        <span>built by <a href="https://github.com/manojxshrestha" target="_blank" rel="noopener" style="color:var(--accent)">@manojxshrestha</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

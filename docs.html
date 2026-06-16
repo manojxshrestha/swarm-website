@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation — Dristi</title>
+  <meta name="description" content="Dristi documentation: install guide, quickstart, usage, and agent reference.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%228%22 stroke=%22%23ff8b14%22 stroke-width=%222.5%22 fill=%22none%22/><path d=%22M12 18h24M12 24h18M12 30h14%22 stroke=%22%23ff8b14%22 stroke-width=%222%22 stroke-linecap=%22round%22/></svg>">
+</head>
+<body>
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/assets/dristi-logo.svg" alt="Dristi" class="nav-brand-img" width="32" height="32">Dristi
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/agents.html">Agents</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener" class="theme-toggle" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Documentation</h1>
+      <p>Everything you need to install, configure, and run Dristi.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="docs-layout">
+      <aside class="docs-sidebar">
+        <h4>Contents</h4>
+        <nav class="docs-nav">
+          <a href="#quickstart">Quickstart</a>
+          <a href="#install">Installation</a>
+          <a href="#usage">Usage</a>
+          <a href="#agents">Agent Reference</a>
+          <a href="#pipeline">Pipeline</a>
+        </nav>
+      </aside>
+      <main class="docs-content">
+
+        <!-- Quickstart -->
+        <h2 id="quickstart">Quickstart</h2>
+        <p>Get Dristi up and running in under 5 minutes. Three commands — install tools, configure agents, start hunting.</p>
+        <div class="cmd-block">
+          <div><span class="comment"># Step 1: Install all tools</span></div>
+          <div><span class="prompt">$</span> <span class="cmd">curl -sSL https://dristi.sh/install | bash</span></div>
+          <div style="margin-top:.75rem"><span class="comment"># Step 2: Configure OpenCode + agents</span></div>
+          <div><span class="prompt">$</span> <span class="cmd">./scripts/setup.sh</span></div>
+          <div style="margin-top:.75rem"><span class="comment"># Step 3: Start a full pipeline hunt</span></div>
+          <div><span class="prompt">$</span> <span class="cmd">opencode --agent autopilot --target example.com</span></div>
+        </div>
+
+        <!-- Installation -->
+        <h2 id="install">Installation</h2>
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Linux (Ubuntu 22.04+, Debian 12+, Arch, Fedora) or macOS</li>
+          <li>Git, curl, sudo access</li>
+          <li>OpenCode CLI installed (<code>npm install -g @opencode/cli</code>)</li>
+          <li>LLM API key (Claude, GPT, or Ollama for local)</li>
+        </ul>
+
+        <h3>1. Install Tools (install.sh)</h3>
+        <p>Installs 60+ security tools: Go binaries, Python packages, Cargo crates, Playwright Chromium, GF patterns, and SecLists.</p>
+        <div class="cmd-block">
+          <div><span class="prompt">$</span> <span class="cmd">curl -sSL https://dristi.sh/install | bash</span></div>
+          <div style="margin-top:.5rem"><span class="comment"># Or from the repo:</span></div>
+          <div><span class="prompt">$</span> <span class="cmd">git clone https://github.com/manojxshrestha/dristi && cd dristi && bash scripts/install.sh</span></div>
+        </div>
+
+        <h3>2. Configure Agents (setup.sh)</h3>
+        <p>Sets up the Dristi agent definitions, OpenCode config, and MCP server configuration.</p>
+        <div class="cmd-block">
+          <div><span class="prompt">$</span> <span class="cmd">bash scripts/setup.sh</span></div>
+        </div>
+
+        <h3>3. Connect Burp Suite (Optional)</h3>
+        <p>For active testing with Burp proxy:</p>
+        <div class="cmd-block">
+          <div><span class="prompt">$</span> <span class="cmd">bash scripts/connect-burp.sh</span></div>
+        </div>
+
+        <!-- Usage -->
+        <h2 id="usage">Usage</h2>
+
+        <h3>Quickstart — Your First Engagement</h3>
+        <p>Start OpenCode in the project directory and describe your target in plain English:</p>
+        <div class="cmd-block">
+          <div><span class="cmd">opencode</span></div>
+          <div style="margin-top:.75rem"><span class="output">&gt; Dristi engagement on example.com — HackerOne program with web app and API.</span></div>
+          <div style="margin-top:.5rem"><span class="output">  Run full workflow: scope intake → recon → hunt → validate → capture → report.</span></div>
+        </div>
+        <p>Agents auto-load by topic — you don't need to remember agent names. Just describe what you're testing.</p>
+
+        <h3>Running the Full Pipeline</h3>
+
+        <p>Dristi offers three modes for running the 12-phase pipeline:</p>
+
+        <p><strong>1. Autopilot (fully autonomous):</strong></p>
+        <div class="cmd-block">
+          <div><span class="cmd">@autopilot</span> <span class="comment"># in OpenCode conversation</span></div>
+        </div>
+        <p>Dispatches all 12 phases via sub-agents. Auto-checks phase gates, auto-checkpoints, handles WAF detection, activates conditional phases (DeepThink, Search) automatically, and ends with a full report. No human intervention needed.</p>
+
+        <p><strong>2. Consult (interactive):</strong></p>
+        <div class="cmd-block">
+          <div><span class="cmd">@consult</span> <span class="comment"># in OpenCode conversation</span></div>
+        </div>
+        <p>Same pipeline, but pauses at every phase transition. Presents findings, suggests next steps, and asks for your approval before proceeding. Best for learning the methodology or when you want oversight.</p>
+
+        <p><strong>3. Manual (step-by-step):</strong></p>
+        <div class="cmd-block">
+          <div><span class="cmd">@scope</span> <span class="cmd">@recon</span> <span class="cmd">@surface</span> <span class="cmd">@hunt</span></div>
+          <div><span class="cmd">@deepthink</span> <span class="cmd">@exploit</span> <span class="cmd">@search</span></div>
+          <div><span class="cmd">@capture</span> <span class="cmd">@validate</span> <span class="cmd">@report</span></div>
+        </div>
+        <p>Invoke each agent individually. You control the transitions and gates. Best for targeted single-class testing when you already know what you want to do.</p>
+
+        <h3>Targeting Specific Vulnerability Classes</h3>
+        <p>Describe what you see, and the right agent loads automatically. Or invoke by name:</p>
+        <div class="cmd-block">
+          <div><span class="comment"># Describe what you see:</span></div>
+          <div><span class="output">&gt; XSS on the search endpoint — testing with multiple contexts.</span></div>
+          <div style="margin-top:.75rem"><span class="comment"># Or invoke directly:</span></div>
+          <div><span class="cmd">@hunt-xss</span> <span class="comment"># Cross-Site Scripting — curated from BugBoard's H1 database</span></div>
+          <div><span class="cmd">@hunt-sqli</span> <span class="comment"># SQL Injection — classic, blind, time-based</span></div>
+          <div><span class="cmd">@hunt-ssrf</span> <span class="comment"># SSRF — 11 IP bypass techniques, cloud metadata exfil</span></div>
+          <div><span class="cmd">@hunt-idor</span> <span class="comment"># Insecure Direct Object Reference</span></div>
+          <div><span class="cmd">@hunt-rce</span> <span class="comment"># Remote Code Execution — crown-jewel chains</span></div>
+          <div><span class="cmd">@hunt-ssti</span> <span class="comment"># Server-Side Template Injection — Jinja2, Twig, Freemarker</span></div>
+          <div><span class="cmd">@hunt-graphql</span> <span class="comment"># GraphQL — introspection, batching, alias abuse</span></div>
+          <div><span class="cmd">@hunt-xxe</span> <span class="comment"># XML External Entity — in-band, blind OOB, SVG</span></div>
+          <div><span class="cmd">@hunt-ato</span> <span class="comment"># Account Takeover — 9 distinct ATO paths</span></div>
+          <div><span class="cmd">@hunt-jwt-confusion</span> <span class="comment"># JWT alg confusion, key confusion</span></div>
+          <div><span class="cmd">@hunt-file-upload</span> <span class="comment"># File upload — 10 bypass techniques</span></div>
+          <div><span class="cmd">@hunt-race-condition</span> <span class="comment"># Race conditions — TOCTOU, double-spend</span></div>
+          <div><span class="cmd">@hunt-http-smuggling</span> <span class="comment"># HTTP Request Smuggling — CL.TE, TE.CL</span></div>
+        </div>
+
+        <h3>Enterprise &amp; Platform Testing</h3>
+        <div class="cmd-block">
+          <div><span class="cmd">@cloud-iam-deep</span> <span class="comment"># AWS/Azure/GCP IAM — 24+ priv-esc patterns</span></div>
+          <div><span class="cmd">@m365-entra-attack</span> <span class="comment"># Microsoft 365 / Entra ID — AADSTS, CA bypass</span></div>
+          <div><span class="cmd">@okta-attack</span> <span class="comment"># Okta — push fatigue, FastPass abuse</span></div>
+          <div><span class="cmd">@enterprise-vpn-attack</span> <span class="comment"># Cisco, Fortinet, Citrix, Pulse VPNs</span></div>
+          <div><span class="cmd">@apk-redteam-pipeline</span> <span class="comment"># Android APK — decompile, Frida, cert pinning bypass</span></div>
+          <div><span class="cmd">@supply-chain-attack-recon</span> <span class="comment"># Dependency confusion, GH Actions injection</span></div>
+          <div><span class="cmd">@hunt-k8s</span> <span class="comment"># Kubernetes — RBAC abuse, pod escape, kubelet API</span></div>
+          <div><span class="cmd">@hunt-springboot</span> <span class="comment"># Spring Boot — actuator, SpEL, Spring4Shell</span></div>
+          <div><span class="cmd">@hunt-laravel</span> <span class="comment"># Laravel — debug mode, APP_KEY decryption</span></div>
+          <div><span class="cmd">@hunt-cicd</span> <span class="comment"># CI/CD — GH Actions injection, Jenkins RCE</span></div>
+          <div><span class="cmd">@hunt-llm-ai</span> <span class="comment"># LLM/AI — prompt injection, RAG poisoning</span></div>
+        </div>
+
+        <h3>Slash Commands</h3>
+        <p>Available inside OpenCode conversations for quick actions:</p>
+        <div class="cmd-block">
+          <div><span class="cmd">/hunt</span> <span class="comment"># Run targeted vulnerability hunting</span></div>
+          <div><span class="cmd">/triage</span> <span class="comment"># Quick 7-Question Gate on a finding</span></div>
+          <div><span class="cmd">/validate</span> <span class="comment"># Full 4-gate finding validator</span></div>
+          <div><span class="cmd">/report</span> <span class="comment"># Draft a submission-ready report</span></div>
+          <div><span class="cmd">/recon</span> <span class="comment"># Run recon pipeline</span></div>
+          <div><span class="cmd">/capture</span> <span class="comment"># Capture/preserve evidence with redaction</span></div>
+          <div><span class="cmd">/deepthink</span> <span class="comment"># Trigger first-principles gap analysis</span></div>
+          <div><span class="cmd">/search</span> <span class="comment"># Research CVEs, bypass techniques</span></div>
+          <div><span class="cmd">/exploit</span> <span class="comment"># Deep-research exploitation</span></div>
+          <div><span class="cmd">/chain</span> <span class="comment"># Check chaining opportunities between findings</span></div>
+          <div><span class="cmd">/scope &lt;asset&gt;</span> <span class="comment"># Verify a specific asset is in scope</span></div>
+        </div>
+
+        <h3>Finding Validation — The 7-Question Gate</h3>
+        <p>Before any finding enters your report, it passes through the 7-Question Gate:</p>
+        <ol>
+          <li>Can an attacker use this RIGHT NOW with a real HTTP request?</li>
+          <li>Is the impact on the program's accepted-impact list?</li>
+          <li>Is the vulnerable asset in scope?</li>
+          <li>Does it work without privileged access an attacker can't get?</li>
+          <li>Is this not already known or documented behavior?</li>
+          <li>Can impact be proved beyond "technically possible"?</li>
+          <li>Is this NOT on the never-submit list?</li>
+        </ol>
+        <p><strong>Verdicts:</strong> PASS → proceed to report &nbsp;|&nbsp; DOWNGRADE → lower severity, still report &nbsp;|&nbsp; CHAIN REQUIRED → needs another primitive &nbsp;|&nbsp; KILL → discard</p>
+        <p>Never-submit list: missing headers alone, introspection alone, clickjacking alone, self-XSS, open redirect alone, SSRF DNS-only, logout CSRF, rate limits on non-critical forms, cookie flags alone.</p>
+
+        <h3>Engagement Management</h3>
+
+        <p><strong>Start an engagement:</strong></p>
+        <div class="cmd-block">
+          <div><span class="output">&gt; Starting Dristi engagement on example.com — HackerOne program.</span></div>
+          <div><span class="output">&gt; Run full workflow: scope intake → recon → hunt → validate → capture → report.</span></div>
+        </div>
+
+        <p><strong>Register scope:</strong> Agents use <code>register_scope()</code> and <code>register_scope_batch()</code> to register all in-scope domains, apps, and API endpoints. Bug bounty scope tables can be pasted directly for automatic parsing.</p>
+
+        <p><strong>Set up auth:</strong> The auth phase detects WAF vendor via response headers, captures tokens/cookies, and saves authentication context for downstream phases.</p>
+
+        <p><strong>Track everything:</strong> Every test, tool run, and finding is automatically tracked via MCP tools. At the end of an engagement, <code>get_coverage()</code> and <code>get_tool_coverage()</code> verify nothing was missed before report generation.</p>
+
+        <h3>Report Generation</h3>
+        <p>After validation, generate a professional report:</p>
+        <div class="cmd-block">
+          <div><span class="cmd">@report</span> <span class="comment"># In OpenCode — full coverage check + deliverable</span></div>
+        </div>
+        <p>The report generator first runs <code>get_coverage()</code> and <code>phase_gate_check()</code> to verify all phases passed, then produces a CVSS-scored report with evidence, PoC output, and remediation guidance. Platform-specific reporters handle HackerOne, Bugcrowd, Intigriti, Immunefi, and client-facing DOCX formats.</p>
+
+        <!-- Agent Reference -->
+        <h2 id="agents">Agent Reference</h2>
+        <p>Dristi ships with <strong>87 autonomous agents</strong> organized into 5 categories:</p>
+
+        <h3>Pipeline Agents (12)</h3>
+        <table>
+          <thead><tr><th>Agent</th><th>Phase</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>autopilot</td><td>Full</td><td>Fully autonomous P1–P12 orchestration</td></tr>
+            <tr><td>consult</td><td>Full</td><td>Interactive pipeline — pauses at every phase for human guidance</td></tr>
+            <tr><td>scope</td><td>1</td><td>Engagement scaffold, scope boundaries, credentials</td></tr>
+            <tr><td>auth</td><td>2</td><td>Authenticate to target, capture tokens, cookies, session state</td></tr>
+            <tr><td>pintel</td><td>3</td><td>Passive intel — WHOIS, M365/Azure, cloud buckets, spoof check</td></tr>
+            <tr><td>osint</td><td>3</td><td>OSINT methodology — source verification, identity correlation</td></tr>
+            <tr><td>recon</td><td>4</td><td>Subdomain enum, DNS, crawl, params, nuclei, secrets</td></tr>
+            <tr><td>surface</td><td>5</td><td>Attack surface ranking, endpoint prioritization</td></tr>
+            <tr><td>hunt</td><td>6</td><td>Dispatch hunt-* agents based on surface analysis</td></tr>
+            <tr><td>deepthink</td><td>7</td><td>(conditional) First-principles gap analysis when hunt stalls</td></tr>
+            <tr><td>exploit</td><td>8</td><td>Deep-research exploitation, WAF bypass, finding chains</td></tr>
+            <tr><td>search</td><td>9</td><td>(conditional) Research CVEs, bypass techniques, disclosed reports</td></tr>
+            <tr><td>capture</td><td>10</td><td>Evidence collection, screenshots, HAR sanitization</td></tr>
+            <tr><td>validate</td><td>11</td><td>Re-run PoCs, 7-Question Gate, severity grading</td></tr>
+            <tr><td>report</td><td>12</td><td>Coverage check, phase gates, final deliverable</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Hunt Agents (54)</h3>
+        <table>
+          <thead><tr><th>Agent</th><th>Vulnerability Class</th></tr></thead>
+          <tbody>
+            <tr><td>hunt-xss</td><td>Cross-Site Scripting</td></tr>
+            <tr><td>hunt-sqli</td><td>SQL Injection</td></tr>
+            <tr><td>hunt-ssrf</td><td>Server-Side Request Forgery</td></tr>
+            <tr><td>hunt-rce</td><td>Remote Code Execution</td></tr>
+            <tr><td>hunt-idor</td><td>Insecure Direct Object Reference</td></tr>
+            <tr><td>hunt-ato</td><td>Account Takeover</td></tr>
+            <tr><td>hunt-lfi</td><td>Local File Inclusion / Path Traversal</td></tr>
+            <tr><td>hunt-ssti</td><td>Server-Side Template Injection</td></tr>
+            <tr><td>hunt-csrf</td><td>Cross-Site Request Forgery</td></tr>
+            <tr><td>hunt-cors</td><td>CORS Misconfiguration</td></tr>
+            <tr><td>hunt-nosqli</td><td>NoSQL Injection</td></tr>
+            <tr><td>hunt-oauth</td><td>OAuth 2.0 / OpenID Connect</td></tr>
+            <tr><td>hunt-jwt-confusion</td><td>JWT Algorithm Confusion</td></tr>
+            <tr><td>hunt-graphql</td><td>GraphQL API</td></tr>
+            <tr><td>hunt-xxe</td><td>XML External Entity</td></tr>
+            <tr><td>hunt-brute-force</td><td>Brute Force / Credential Stuffing</td></tr>
+            <tr><td>hunt-race-condition</td><td>Race Conditions</td></tr>
+            <tr><td>hunt-http-smuggling</td><td>HTTP Request Smuggling</td></tr>
+            <tr><td>hunt-host-header</td><td>Host Header Injection</td></tr>
+            <tr><td>hunt-open-redirect</td><td>Open Redirect</td></tr>
+            <tr><td>hunt-cache-poison</td><td>Web Cache Poisoning</td></tr>
+            <tr><td>hunt-file-upload</td><td>File Upload Vulnerabilities</td></tr>
+            <tr><td>hunt-deserialization</td><td>Insecure Deserialization</td></tr>
+            <tr><td>hunt-business-logic</td><td>Business Logic Flaws</td></tr>
+            <tr><td>hunt-subdomain</td><td>Subdomain Takeover</td></tr>
+            <tr><td>hunt-dom</td><td>DOM-based Vulnerabilities</td></tr>
+            <tr><td>hunt-session</td><td>Session Management Flaws</td></tr>
+            <tr><td>hunt-mfa-bypass</td><td>MFA Bypass</td></tr>
+            <tr><td>hunt-auth-bypass</td><td>Authentication Bypass</td></tr>
+            <tr><td>hunt-misc</td><td>Catch-all / Emerging Threats</td></tr>
+            <tr><td>hunt-clickjacking</td><td>Clickjacking</td></tr>
+            <tr><td>hunt-crlf</td><td>CRLF Injection</td></tr>
+            <tr><td>hunt-dependency-confusion</td><td>Dependency Confusion</td></tr>
+            <tr><td>hunt-http-param-pollution</td><td>HTTP Parameter Pollution</td></tr>
+            <tr><td>hunt-mass-assignment</td><td>Mass Assignment</td></tr>
+            <tr><td>hunt-prototype-pollution</td><td>Prototype Pollution</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Platform Agents (15)</h3>
+        <table>
+          <thead><tr><th>Agent</th><th>Platform</th></tr></thead>
+          <tbody>
+            <tr><td>hunt-k8s</td><td>Kubernetes</td></tr>
+            <tr><td>hunt-springboot</td><td>Spring Boot</td></tr>
+            <tr><td>hunt-laravel</td><td>Laravel</td></tr>
+            <tr><td>hunt-nextjs</td><td>Next.js / Vercel</td></tr>
+            <tr><td>hunt-nodejs</td><td>Node.js / Express</td></tr>
+            <tr><td>hunt-sharepoint</td><td>SharePoint</td></tr>
+            <tr><td>hunt-aspnet</td><td>ASP.NET / .NET</td></tr>
+            <tr><td>hunt-cicd</td><td>CI/CD Pipeline</td></tr>
+            <tr><td>hunt-saml</td><td>SAML SSO</td></tr>
+            <tr><td>hunt-llm-ai</td><td>LLM / AI Security</td></tr>
+            <tr><td>hunt-ldap</td><td>LDAP Injection</td></tr>
+            <tr><td>hunt-tls-network</td><td>TLS / SSL</td></tr>
+            <tr><td>hunt-websocket</td><td>WebSocket Security</td></tr>
+            <tr><td>hunt-source-leak</td><td>Source Code Leak</td></tr>
+            <tr><td>hunt-cloud-misconfig</td><td>Cloud Misconfiguration</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Specialty Agents (10)</h3>
+        <table>
+          <thead><tr><th>Agent</th><th>Domain</th></tr></thead>
+          <tbody>
+            <tr><td>cloud-iam-deep</td><td>AWS / Azure / GCP IAM</td></tr>
+            <tr><td>enterprise-vpn-attack</td><td>Cisco / Fortinet / Citrix VPN Appliances</td></tr>
+            <tr><td>m365-entra-attack</td><td>Microsoft 365 / Entra ID</td></tr>
+            <tr><td>okta-attack</td><td>Okta Identity Platform</td></tr>
+            <tr><td>supply-chain-attack-recon</td><td>Supply Chain Security</td></tr>
+            <tr><td>meme-coin-audit</td><td>Meme Coin / Token Audit</td></tr>
+            <tr><td>apk-redteam-pipeline</td><td>Android APK Assessment</td></tr>
+            <tr><td>offensive-osint</td><td>Offensive OSINT</td></tr>
+            <tr><td>hunt-ntlm-info</td><td>NTLM Information Disclosure</td></tr>
+            <tr><td>hunt-api-misconfig</td><td>API Misconfiguration</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Supporting Agents (12)</h3>
+        <table>
+          <thead><tr><th>Agent</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td>web2-recon</td><td>Web recon specialist</td></tr>
+            <tr><td>web2-vuln-classes</td><td>Vulnerability class reference</td></tr>
+            <tr><td>osint-methodology</td><td>OSINT methodology guide</td></tr>
+            <tr><td>redteam-mindset</td><td>Red team operations</td></tr>
+            <tr><td>redteam-report-template</td><td>Report template generator</td></tr>
+            <tr><td>report-writing</td><td>Security report writer</td></tr>
+            <tr><td>triage-validation</td><td>Finding triage — 7-Question Gate</td></tr>
+            <tr><td>evidence-hygiene</td><td>Evidence sanitization</td></tr>
+            <tr><td>bugcrowd-reporting</td><td>Bugcrowd VRT reporting</td></tr>
+            <tr><td>bug-bounty</td><td>Bug bounty master methodology</td></tr>
+            <tr><td>hunt-dispatch</td><td>Hunt agent dispatcher</td></tr>
+            <tr><td>explore</td><td>Codebase exploration</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Pipeline -->
+        <h2 id="pipeline">Pipeline</h2>
+        <p>Dristi's 12-phase pipeline covers the full bug bounty workflow:</p>
+        <table>
+          <thead><tr><th>Phase</th><th>Name</th><th>Key Activities</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>Code Analysis</td><td>Source code review, entry point identification</td></tr>
+            <tr><td>1</td><td>Scope</td><td>Engagement config, scope registration, auth setup</td></tr>
+            <tr><td>2</td><td>Auth</td><td>Authenticate, capture tokens, session state</td></tr>
+            <tr><td>3</td><td>Intel</td><td>Passive OSINT, WHOIS, cloud buckets, spoof check</td></tr>
+            <tr><td>4</td><td>Recon</td><td>Subdomains, live hosts, crawl, params, nuclei, secrets</td></tr>
+            <tr><td>5</td><td>Surface</td><td>Attack surface analysis, endpoint prioritization</td></tr>
+            <tr><td>6</td><td>Hunt</td><td>Dedicated hunt agents per vulnerability class</td></tr>
+            <tr><td>7</td><td>DeepThink</td><td>(conditional) Gap analysis, first-principles reasoning</td></tr>
+            <tr><td>8</td><td>Exploit</td><td>Systematic validation, PoC execution, exploitation</td></tr>
+            <tr><td>9</td><td>Search</td><td>(conditional) Research CVEs, bypass techniques, reports</td></tr>
+            <tr><td>10</td><td>Capture</td><td>Evidence collection, screenshots, network captures</td></tr>
+            <tr><td>11</td><td>Validate</td><td>PoC re-validation, impact assessment, severity grading</td></tr>
+            <tr><td>12</td><td>Report</td><td>Coverage check, phase gates, final deliverable</td></tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/dristi-logo.svg" alt="Dristi" style="width:24px;height:24px;display:inline;vertical-align:middle;margin-right:6px">Dristi
+          </div>
+          <p class="footer-desc">AI-assisted bug bounty pipeline. 87 agents. Full OWASP WSTG coverage.</p>
+        </div>
+        <div><h4>Product</h4><div class="footer-links"><a href="/docs.html">Documentation</a><a href="/agents.html">Agents</a><a href="/docs.html#install">Install</a><a href="/docs.html#usage">Usage</a></div></div>
+        <div><h4>Community</h4><div class="footer-links"><a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/manojxshrestha/dristi/issues" target="_blank" rel="noopener">Issues</a><a href="https://github.com/manojxshrestha/dristi/discussions" target="_blank" rel="noopener">Discussions</a></div></div>
+        <div><h4>Legal</h4><div class="footer-links"><a href="#">License (Proprietary)</a><a href="#">Privacy</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dristi. All Rights Reserved.</span>
+        <span>built by <a href="https://github.com/manojxshrestha" target="_blank" rel="noopener" style="color:var(--accent)">@manojxshrestha</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>

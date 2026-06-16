@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Dristi</title>
+  <meta name="description" content="The story behind Dristi — a bug bounty pipeline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect x=%224%22 y=%226%22 width=%2240%22 height=%2236%22 rx=%228%22 stroke=%22%23ff8b14%22 stroke-width=%222.5%22 fill=%22none%22/><path d=%22M12 18h24M12 24h18M12 30h14%22 stroke=%22%23ff8b14%22 stroke-width=%222%22 stroke-linecap=%22round%22/></svg>">
+</head>
+<body>
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/assets/dristi-logo.svg" alt="Dristi" class="nav-brand-img" width="32" height="32">Dristi
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/docs.html">Docs</a>
+        <a href="/agents.html">Agents</a>
+        <a href="/about.html">About</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.5rem">
+        <a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener" class="theme-toggle" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>About Dristi</h1>
+      <p>The story behind the world's most advanced bug bounty pipeline.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="about-content">
+
+      <h2>The Problem</h2>
+      <p>Bug bounty hunting has exploded in complexity. Modern web applications span dozens of microservices, third-party identity providers, GraphQL APIs, cloud infrastructure, and CI/CD pipelines. A single bug bounty program can present hundreds of thousands of attack surface points.</p>
+      <p>Hunters face a fundamental asymmetry: the defender only needs to miss one vulnerability once, but the attacker must find every possible entry point. Manual testing at scale is unsustainable. Automated scanners produce noise, not findings. Most tools operate in isolation — they can't chain vulnerabilities, reason about business logic, or adapt to novel attack patterns.</p>
+      <p>Dristi was built to close this gap.</p>
+
+      <div class="highlight">
+        <strong>87 agents.</strong> Each one is a specialist. Not a generic scanner — an AI-assisted expert focused on a single vulnerability class, platform, or pipeline phase. Together they form an end-to-end security testing operating system.
+      </div>
+
+      <h2>The Philosophy</h2>
+      <p>Dristi is built on three principles:</p>
+      <p><strong>Specialization over generalization.</strong> A single agent that deeply understands XSS — with patterns curated from <a href="https://bugboard.rsecloud.com/hackerone_reports" target="_blank" rel="noopener">BugBoard's disclosed H1 database (10K+ reports)</a> — will always outperform a one-size-fits-all approach. Each agent has domain-specific knowledge, payload libraries, and exploit techniques curated for its class.</p>
+      <p><strong>Pipeline over point solutions.</strong> Vulnerability discovery isn't a single step. It's reconnaissance, surface analysis, targeted hunting, exploitation, validation, and reporting — each feeding into the next. Dristi's 12-phase pipeline ensures no finding is orphaned and no attack chain goes undiscovered.</p>
+      <p><strong>Security-first architecture.</strong> Every agent definition, every prompt, every exploit technique is built on real-world hunting experience. No vendor lock-in. No telemetry. Your data stays yours.</p>
+      <p><strong>No API lock-in.</strong> Dristi works with free models out of the box. Need more power? Bring your own API key — Anthropic, OpenAI, Google, GitHub Copilot — or run fully local with Ollama. You choose the model, you control the cost.</p>
+
+      <h2>Why WSTG?</h2>
+      <p>The OWASP Web Security Testing Guide is the industry standard for web application security testing. It covers 12 categories with 96+ individual test cases — from information gathering through client-side testing. Dristi maps every agent to specific WSTG tests, ensuring methodologically complete coverage.</p>
+      <p>This isn't about ticking boxes. WSTG provides the structure; Dristi provides the automation and reasoning. Tests that require human intuition — business logic flaws, chained attacks, context-aware exploitation — are now automatable through autonomous agents.</p>
+
+      <h2>Architecture</h2>
+      <p>Dristi is built on four integrated layers:</p>
+      <p><strong>Knowledge layer</strong> — WSTG v4.2 (96 tests, 12 categories), PortSwigger technique guides, payload libraries, WAF fingerprints, and exploit references curated from <a href="https://bugboard.rsecloud.com/hackerone_reports" target="_blank" rel="noopener">BugBoard's disclosed H1 database (10K+ reports)</a>.</p>
+      <p><strong>Engagement layer</strong> — SQLite-backed findings database, scope registration, test tracking, phase gates, QA review checkpoints, and automated report generation. Every finding, test, and tool run is tracked.</p>
+      <p><strong>Agent layer</strong> — 87 AI-assisted OpenCode agents: 15 pipeline agents, 54 @hunt-* agents per vulnerability class, 8 specialty agents, and 10 supporting agents. Each agent auto-loads when you describe what you're testing.</p>
+      <p><strong>Execution layer</strong> — Burp Suite MCP for HTTP request execution and recording, Playwright for browser automation, and a WSTG MCP server providing 86 structured methodology tools.</p>
+
+      <div class="highlight">
+        <strong>Three interfaces coexist:</strong> OpenCode agents (conversational), MCP server (86 structured tools), and CLI (deterministic terminal runner).
+      </div>
+
+      <h2>The 12-Phase Pipeline</h2>
+      <p>Every engagement follows a structured pipeline with automated phase gates:</p>
+
+      <table>
+        <thead><tr><th>Phase</th><th>Name</th><th>Agent</th><th>Key Activities</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Scope</strong></td><td>@scope</td><td>Engagement config, scope registration, auth setup, task tree creation</td></tr>
+          <tr><td>2</td><td><strong>Auth</strong></td><td>@auth</td><td>Authenticate to target, capture tokens/cookies, detect WAF vendor</td></tr>
+          <tr><td>3</td><td><strong>Intel</strong></td><td>@pintel / @osint</td><td>Passive OSINT, WHOIS, M365/Azure check, cloud bucket enumeration, SPF/DMARC spoof check</td></tr>
+          <tr><td>4</td><td><strong>Recon</strong></td><td>@recon</td><td>Subdomain enumeration, DNS, crawling, parameter extraction, nuclei scanning, secret hunting</td></tr>
+          <tr><td>5</td><td><strong>Surface</strong></td><td>@surface</td><td>Attack surface analysis, endpoint classification (T0/T1/T2), risk-scored queue</td></tr>
+          <tr><td>6</td><td><strong>Hunt</strong></td><td>@hunt</td><td>Test all 25 vulnerability classes via 54 @hunt-* sub-agents dispatched per surface analysis</td></tr>
+          <tr><td>7</td><td><strong>DeepThink</strong></td><td>@deepthink</td><td><em>(conditional)</em> First-principles gap analysis when hunt yields zero findings</td></tr>
+          <tr><td>8</td><td><strong>Exploit</strong></td><td>@exploit</td><td>5-tier exploitation: confirm → impact → OOB → WAF bypass → attack chains</td></tr>
+          <tr><td>9</td><td><strong>Search</strong></td><td>@search</td><td><em>(conditional)</em> Research current CVEs, bypass techniques, disclosed reports via 13 resources</td></tr>
+          <tr><td>10</td><td><strong>Capture</strong></td><td>@capture</td><td>Evidence collection, screenshots, HAR sanitization, cookie/PII redaction</td></tr>
+          <tr><td>11</td><td><strong>Validate</strong></td><td>@validate</td><td>Re-validate PoCs, 7-Question Gate, PASS/KILL/DOWNGRADE/CHAIN verdicts</td></tr>
+          <tr><td>12</td><td><strong>Report</strong></td><td>@report</td><td>Coverage check, phase gate validation, platform-specific report generation</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Phase gates</strong> ensure quality at every transition. Each gate checks test coverage, tool coverage, and finding integrity before allowing the next phase to proceed. In autopilot mode, gates are automatic; in consult mode, gates pause for human approval.</p>
+
+      <h2>Agent Categories</h2>
+
+      <p><strong>Pipeline agents (16)</strong> — Orchestrate the full engagement lifecycle. From scope intake and authentication through recon, hunting, exploitation, validation, and report generation. Includes browser-auth for automated Playwright-based login.</p>
+
+      <p><strong>Hunt agents (54)</strong> — One agent per vulnerability class. XSS, SQLi, SSRF, RCE, IDOR, ATO, SSTI, CSRF, CORS, JWT, GraphQL, XXE, race conditions, HTTP smuggling, deserialization, subdomain takeover, prototype pollution, and more. Each has deep domain expertise, payload libraries, and bypass techniques.</p>
+
+      <p><strong>Specialty agents (8)</strong> — Enterprise-grade attack chains for cloud IAM (AWS/Azure/GCP), M365/Entra ID, Okta, enterprise VPNs, Android APK assessment, supply chain security, OSINT, and meme coin audits.</p>
+
+      <p><strong>Supporting agents (10)</strong> — Methodology guides, report writers, red-team ops, evidence hygiene, triage validation, bug bounty strategy, and reconnaissance specialists.</p>
+
+      <h2>Key Design Principles</h2>
+      <ol>
+        <li><strong>Validate before drafting</strong> — The 7-Question Gate prevents wasted effort on N/A findings</li>
+        <li><strong>Agents auto-load by topic</strong> — Describe what you see, the right agent activates</li>
+        <li><strong>MCP tracks everything</strong> — Findings, tests, tools, coverage — nothing gets lost</li>
+        <li><strong>Evidence hygiene by default</strong> — Redact before capture, not after</li>
+        <li><strong>Phase gates ensure quality</strong> — Don't skip to reporting without coverage validation</li>
+        <li><strong>Burp is optional</strong> — Curl + browser works fine for most testing</li>
+        <li><strong>WAF bypass before exploit</strong> — Don't waste time crafting payloads that get blocked</li>
+        <li><strong>H1 reports before payloads</strong> — Real-world patterns beat generic payload lists</li>
+        <li><strong>Tier-based dispatch</strong> — T0 (public+input) endpoints get the most attention</li>
+        <li><strong>Validate before logging</strong> — <code>validate_poc()</code> catches false positives before they enter the database</li>
+        <li><strong>Chain awareness</strong> — <code>find_chains()</code> runs after each finding to build attack paths</li>
+      </ol>
+
+      <h2>The Creator</h2>
+      <p>Dristi was built by <strong>@manojxshrestha</strong> — Penetration Tester &amp; Bug Bounty Hunter.</p>
+
+
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/dristi-logo.svg" alt="Dristi" style="width:24px;height:24px;display:inline;vertical-align:middle;margin-right:6px">Dristi
+          </div>
+          <p class="footer-desc">AI-assisted bug bounty pipeline. 87 agents. Full OWASP WSTG coverage.</p>
+        </div>
+        <div><h4>Product</h4><div class="footer-links"><a href="/docs.html">Documentation</a><a href="/agents.html">Agents</a><a href="/docs.html#install">Install</a><a href="/docs.html#usage">Usage</a></div></div>
+        <div><h4>Community</h4><div class="footer-links"><a href="https://github.com/manojxshrestha/dristi" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/manojxshrestha/dristi/issues" target="_blank" rel="noopener">Issues</a><a href="https://github.com/manojxshrestha/dristi/discussions" target="_blank" rel="noopener">Discussions</a></div></div>
+        <div><h4>Legal</h4><div class="footer-links"><a href="#">License (Proprietary)</a><a href="#">Privacy</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dristi. All Rights Reserved.</span>
+        <span>built by <a href="https://github.com/manojxshrestha" target="_blank" rel="noopener" style="color:var(--accent)">@manojxshrestha</a></span>
+      </div>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
